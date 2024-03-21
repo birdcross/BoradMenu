@@ -23,7 +23,7 @@ public class MenuController {
 		List<MenuVo> menuList =  menuMapper.getMenuList();
 	// 조회 결과를 넘겨준다(model)
 		model.addAttribute("menuList",menuList);
-		System.out.println("MenuController list menuList:" + menuList);
+		//System.out.println("MenuController list menuList:" + menuList);
 		return "menus/list";
 	}
 	
@@ -36,13 +36,28 @@ public class MenuController {
 	
 	@RequestMapping("/Write")
 	//Menus/WriteW?menu_id=menu02&menu_name=JSP&menu_seq=2
-	public String write(MenuVo menuVo) {
+	public String write(MenuVo menuVo, Model model) {
 		//넘어온 데이터를 저장하고 
 		menuMapper.insertMenu(menuVo);
-		return "menus/list"; // menus/list.jsp
+		//List<MenuVo> menuList = menuMapper.getMenuList();
+		//model.addAttribute("menuList",menuList);
+		//return "menus/list"; // menus/list.jsp
+		return "redirect:/Menus/List";
+	}
+	// 메뉴삭제 /Menus/Delete
+	@RequestMapping("/Delete")
+	public String delete (MenuVo menuVo, Model model) {
+		// MENU03 을 삭제
+		menuMapper.deletemenu(menuVo);
+		//다시조회해서 model에 담는다
+		//List<MenuVo> menuList = menuMapper.getMenuList();
+		//model.addAttribute("menuList", menuList);
+		//이동할 파일
+		//return "menus/list";
+		return "redirect:/Menus/List";
 	}
 	
-}
+}	
 
 
 
