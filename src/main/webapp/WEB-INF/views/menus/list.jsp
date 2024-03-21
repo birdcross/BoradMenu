@@ -21,7 +21,7 @@
 		color : white;
 		font-weight: bold;
 		td{
-			border-color:white;
+			border-color:red;
 		}
 	}
 
