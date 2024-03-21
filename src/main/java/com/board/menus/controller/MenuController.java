@@ -88,7 +88,39 @@ public class MenuController {
 		return "redirect:/Menus/List";
 	}
 	*/
+	
+	// 메뉴 수정 /Menus/UpdateForm
+	@RequestMapping("UpdateForm")
+	public String updateform(MenuVo menuVo) {
+		
+		// 수정할 데이터를 menu_id 조회
+		
+		// 조회한 내용을 모델로 
+		return "menus/update";
+	}
+	
+	@RequestMapping("/Update")
+	public String update(MenuVo menuVo) {
+		//수정
+		
+		//수정후 조회
+		return "redirect:/Menus/List";
+	}
 }	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
