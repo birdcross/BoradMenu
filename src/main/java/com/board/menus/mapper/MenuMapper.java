@@ -13,5 +13,7 @@ public interface MenuMapper {
 	List<MenuVo> getMenuList();
 
 	void deletemenu(MenuVo menuVo);
+
+	void insertMenuByName(MenuVo menuVo);
 	
 }

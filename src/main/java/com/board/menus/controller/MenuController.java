@@ -28,12 +28,14 @@ public class MenuController {
 		return "menus/list";
 	}
 	
+	
 	// /Menus/WriteForm
 	//@RequestMapping("/Menus/WriteForm")
 	@RequestMapping("/WriteForm")
 	public   String   writeForm() {
 		return "menus/write";  // /WEB-INF/views/ + menus/write + .jsp
 	}
+	
 	
 	@RequestMapping("/Write")
 	//Menus/WriteW?menu_id=menu02&menu_name=JSP&menu_seq=2
@@ -43,6 +45,19 @@ public class MenuController {
 		//List<MenuVo> menuList = menuMapper.getMenuList();
 		//model.addAttribute("menuList",menuList);
 		//return "menus/list"; // menus/list.jsp
+		return "redirect:/Menus/List";
+	}
+	
+	@RequestMapping("/WriteForm2")
+	public String writeform2() {
+		
+		return "menus/write2";
+	}
+	@RequestMapping("/Write2")
+	public String write2(MenuVo menuVo) {
+		//저장
+		menuMapper.insertMenuByName(menuVo);
+		//조회로 이동
 		return "redirect:/Menus/List";
 	}
 	// 메뉴삭제 /Menus/Delete
