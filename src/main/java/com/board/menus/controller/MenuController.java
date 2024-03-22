@@ -91,18 +91,20 @@ public class MenuController {
 	
 	// 메뉴 수정 /Menus/UpdateForm
 	@RequestMapping("UpdateForm")
-	public String updateform(MenuVo menuVo) {
-		
+	public String updateform(MenuVo menuVo, Model model) {
+		System.out.println("menuVo:" + menuVo.toString());
+		String menu_id = menuVo.getMenu_id();
 		// 수정할 데이터를 menu_id 조회
-		
-		// 조회한 내용을 모델로 
+		MenuVo menu = menuMapper.getMenu(menu_id);
+		// 조회한 내용을 모델로
+		model.addAttribute("menu", menu);
 		return "menus/update";
 	}
 	
 	@RequestMapping("/Update")
 	public String update(MenuVo menuVo) {
 		//수정
-		
+		menuMapper.updateMenu(menuVo);
 		//수정후 조회
 		return "redirect:/Menus/List";
 	}
